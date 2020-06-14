@@ -1,0 +1,31 @@
+import pymongo
+import time
+import datetime
+from pymongo import MongoClient
+
+
+#clent = MongoClient('mongodb://tracerouteuser:abc123@192.168.56.102', 27017)
+client = MongoClient('mongodb://mongo-root:passw0rd@192.168.56.102:27017')
+
+db = client['pytest']
+collection = db['test']
+names = db.test.find()
+
+collection2 = db['pytestResult']
+for p in names:
+    print(p['name'])
+    name2 = p['name'] 
+    post = {"name":name2,"score":8,"date":datetime.datetime.now()}
+    collection2.insert_one(post)
+
+
+
+"""
+__END__
+collection = client['tracerouteschedulerts']
+print(f'collection is ${collection}')
+print(type(collection))
+DATABASE_PASSWORD=abc123
+#DATABASE=mongodb://xmen:<PASSWORD>@192.168.56.102:27017/tour
+DATABASE=mongodb://tracerouteuser:<PASSWORD>@192.168.56.102:27017/tracerouted
+"""
