@@ -2,6 +2,8 @@
 
 -Your task is to figure out the admin user and create a new user who can editnew db
 
+## this is what you should do
+
 i)is it running already(mongodb)
 
      - if it's running
