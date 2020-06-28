@@ -1,0 +1,10 @@
+const Task = require('./constructor_pattern')
+let task1 = new Task(`create a demo for constructors`)
+let task2 = new Task(`create a demoo for modules`)
+let task3 = new Task(`create a demo for singletons`)
+let task4 = new Task(`create a demo for protyotypes`)
+
+task1.complete()
+task2.save()
+task3.save()
+task4.save();
