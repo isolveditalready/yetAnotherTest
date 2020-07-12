@@ -1,7 +1,8 @@
 const Task = require('./task');
-const repoFactory = require('./repoFactory');
+const repoFactory = require('./repoFactorywCache');
 
 let task1 = new Task(repoFactory.getRepo('task').get(1))
+let task2 = new Task(repoFactory.getRepo('task').get(2))
 
 
 let user = repoFactory.getRepo('user').get(1);

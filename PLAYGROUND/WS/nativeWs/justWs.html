@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      div#log {
+        width: 500px;
+        height: 400px;
+        border: 5px solid black;
+        margin: 0 auto;
+        border-radius: 7px;
+      }
+      div#sendCtrls {
+        width: 280px;
+        margin: 10px auto;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div id="log"></div>
+    <div id="sendCtrls">
+      <input type="text" placeholder="your f msg" id="text" />
+      <button>Send Hello</button>
+    </div>
+
+    <script>
+      let name = prompt("what is your name ");
+      let ws = new WebSocket("ws://192.168.56.102:8080");
+
+      ws.onopen = () => {
+        console.log("connection is open???");
+        ws.send(
+          JSON.stringify({
+            type: "name",
+            data: name,
+          })
+        );
+      };
+
+      let log = document.getElementById("log");
+
+      ws.onmessage = (event) => {
+        let json = JSON.parse(event.data);
+        log.innerHTML += json.name + " : " + json.data + "<br />";
+      };
+
+      document.querySelector("button").addEventListener("click", (e) => {
+        let text = document.getElementById("text").value;
+        ws.send(
+          JSON.stringify({
+            type: "message",
+            data: text,
+          })
+        );
+        log.innerHTML += "YOU : " + text + "<br />";
+      });
+    </script>
+  </body>
+</html>

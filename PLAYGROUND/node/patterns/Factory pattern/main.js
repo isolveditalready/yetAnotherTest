@@ -1,7 +1,7 @@
 const Task = require('./task')
 const Repo = require('./taskRepository')
 const userRepo = require('./userRepository')
-const projectRepo = require('./projecctRepository')
+const projectRepo = require('./projectRepository')
 
 let task1 = new Task(Repo.get(1))
 let user = userRepo.get(1);
